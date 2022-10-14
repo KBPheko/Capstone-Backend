@@ -9,13 +9,10 @@ public class Login {
 @Id
 private String email;
 private String password;
-@Column(name = "firstname")
-private String firstName;
-@Column(name = "lastname")
-private String lastName;
+private String firstname;
+private String lastname;
 private String dob;  //date of birth
-@Column(name = "mobilenumber")
-private String mobileNumber;
+private String mobilenumber;
 private String role;
 public String getEmail() {
 	return email;
@@ -29,17 +26,17 @@ public String getPassword() {
 public void setPassword(String password) {
 	this.password = password;
 }
-public String getFirstName() {
-	return firstName;
+public String getFirstname() {
+	return firstname;
 }
-public void setFirstName(String firstName) {
-	this.firstName = firstName;
+public void setFirstname(String firstname) {
+	this.firstname = firstname;
 }
-public String getLastName() {
-	return lastName;
+public String getLastname() {
+	return lastname;
 }
-public void setLastName(String lastName) {
-	this.lastName = lastName;
+public void setLastname(String lastname) {
+	this.lastname = lastname;
 }
 public String getDob() {
 	return dob;
@@ -47,11 +44,11 @@ public String getDob() {
 public void setDob(String dob) {
 	this.dob = dob;
 }
-public String getMobileNumber() {
-	return mobileNumber;
+public String getMobilenumber() {
+	return mobilenumber;
 }
-public void setMobileNumber(String mobileNumber) {
-	this.mobileNumber = mobileNumber;
+public void setMobilenumber(String mobilenumber) {
+	this.mobilenumber = mobilenumber;
 }
 public String getRole() {
 	return role;
@@ -59,5 +56,6 @@ public String getRole() {
 public void setRole(String role) {
 	this.role = role;
 }
+
 
 }

@@ -21,11 +21,13 @@ public class LoginController {
 	
 	@PostMapping(value = "signIn", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String signIn(@RequestBody Login login) {
+		System.out.println(login.getEmail());
 		return loginService.signIn(login);
 	}
 	
 	@PostMapping(value = "createProfile", consumes = MediaType.APPLICATION_JSON_VALUE)
 	public String createProfile(@RequestBody Login login) {
+		System.out.println(login.getFirstname() +" "+ login.getEmail());
 		return loginService.createProfile(login);
 	}
 }
