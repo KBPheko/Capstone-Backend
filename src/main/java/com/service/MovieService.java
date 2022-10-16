@@ -60,6 +60,7 @@ public class MovieService {
 			mv1.setShowtime(mv.getShowtime());
 			mv1.setGenre(mv.getGenre());
 			mv1.setImageurl(mv.getImageurl());
+			mv1.setQuantity(mv.getQuantity());
 			
 			movieRepository.saveAndFlush(mv1);
 			return "Movie records updated successfully";

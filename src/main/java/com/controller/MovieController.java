@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.entity.Movie;
 import com.service.MovieService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("movie")
-@CrossOrigin
 public class MovieController {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class MovieController {
 		return movieService.updateMovieRecord(mv);
 	}
 	
-	@GetMapping(value = "findMovies", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "findMovies")
 	public List<Movie> getAllMovie(){
 		return movieService.getAllMovies();
 	}
