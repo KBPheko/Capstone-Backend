@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.entity.Movie;
@@ -41,7 +42,7 @@ public class MovieController {
 	}
 	
 	@GetMapping(value = "findMovie/{mid}")
-	public String findMovie(@PathVariable("mid") int mid) {
+	public Movie findMovie(@PathVariable("mid") int mid) {
 		return movieService.findMovie(mid);
 	}
 	

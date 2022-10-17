@@ -16,7 +16,6 @@ public class MovieService {
 	MovieRepository movieRepository;
 	
 	public String storeMovie(Movie movie) {
-		
 		movieRepository.save(movie);
 		return "Movie record stored successfully";
 	}
@@ -25,15 +24,21 @@ public class MovieService {
 		return movieRepository.findAll();
 	}
 	
-	public String findMovie(int mid) {
-		Optional<Movie> result = movieRepository.findById(mid);
+	public Movie findMovie(int mid) {
+		Optional<Movie> results = movieRepository.findById(mid);
+	    Movie mvie = results.get();
+		return movieRepository.getById(mvie.getMid());
 		
-		if (result.isPresent()){
-			Movie mv = result.get();
-			return mv.toString();
-		} else {
-			return "Movie unavailable, mid ("+ mid+ ") does not exist";
-		}
+		
+//		Optional<Movie> results = movieRepository.findById(mid);
+//		if(results.isPresent()) {
+//			Movie mv = results.get();
+//			Movie nn = movieRepository.getById(mv.getMid());
+//			return nn;
+//		} else {
+//			return results;
+//		}
+		
 	}
 	
 	public String deleteMovieRecord(int mid) {
