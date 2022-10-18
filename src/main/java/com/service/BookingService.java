@@ -34,18 +34,18 @@ public class BookingService {
 		return bookingRepository.findById(bookingid).get();
 	}
 	
-	public Booking addBooking(Booking booking, int emailid, Integer movieid) {
+	public Booking addBooking(Booking booking, Integer movieid) {
 		
-		Login custom_email = new Login();
-		Movie movie = new Movie();
-		
-		if(movieid != null) {
-			movie=movieRepository.findById(movieid).get();
-			movie.setBooking(booking);
-			booking.setMovie(movie);
+		Movie mov = new Movie();
+		if(movieid!=null) {
+			mov = movieRepository.findById(movieid).get();
+			
+			booking.setMovie(mov);
 		}
+		bookingRepository.saveAndFlush(booking);
 		
-		return bookingRepository.findById(booking.getBid()).get();
+		return booking;
+		
 	}
 	
 	public String bookMovie(Booking booking) {

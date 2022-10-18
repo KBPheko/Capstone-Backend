@@ -1,6 +1,7 @@
 package com.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,7 +27,13 @@ public class BookingController {
 //		return bookingService.addBooking(bk);
 //	}
 	
-	public ResponseEntity<Booking> addBooking(@RequestBody Booking b,@RequestParam Integer emailid,@RequestParam Integer movieid){
-		return ResponseEntity.ok(bookingService.addBooking(b, emailid, movieid));
+	
+	@PostMapping("bookmovie")
+	public ResponseEntity<Booking> addBooking(@RequestBody Booking b, @RequestParam Integer mid){
+		//return ResponseEntity.ok(bookingService.addBooking(b, mid));
+		
+		b = bookingService.addBooking(b, mid);
+		System.out.println("Booked movie successfully");
+		return new ResponseEntity<>(b, HttpStatus.CREATED);
 	}
 }

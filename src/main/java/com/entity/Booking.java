@@ -13,12 +13,13 @@ public class Booking {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int bid;   //booking ID
-private String cust;  //emailid
-//private String movie;
+private int tickets; 
 private String bookingdate;
 private float totalprice;
 @OneToOne(mappedBy = "booking")
 private Movie movie;
+@ManyToOne
+private Login customer;
 
 public Movie getMovie() {
 	return movie;
@@ -32,18 +33,12 @@ public int getBid() {
 public void setBid(int bid) {
 	this.bid = bid;
 }
-public String getCust() {
-	return cust;
+public int getTickets() {
+	return tickets;
 }
-public void setCust(String cust) {
-	this.cust = cust;
+public void setTickets(int tickets) {
+	this.tickets = tickets;
 }
-//public String getMovie() {
-//	return movie;
-//}
-//public void setMovie(String movie) {
-//	this.movie = movie;
-//}
 public String getBookingdate() {
 	return bookingdate;
 }
@@ -56,9 +51,16 @@ public float getTotalprice() {
 public void setTotalprice(float totalprice) {
 	this.totalprice = totalprice;
 }
+public Login getCustomer() {
+	return customer;
+}
+public void setCustomer(Login customer) {
+	this.customer = customer;
+}
 @Override
 public String toString() {
-	return "Booking [bid=" + bid + ", cust=" + cust + ", movie=" + movie + ", bookingdate=" + bookingdate + "]";
+	return "Booking [bid=" + bid + ", tickets=" + tickets + ", bookingdate=" + bookingdate + ", totalprice="
+			+ totalprice + ", movie=" + movie + ", customer=" + customer + "]";
 }
 
 }
