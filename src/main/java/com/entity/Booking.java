@@ -18,8 +18,9 @@ private String bookingdate;  //when a customer would like to see the movie
 private float totalprice;
 @OneToOne
 private Movie movie;
-@ManyToOne
-private Login customer;
+//@ManyToOne
+//private Login customer;
+private String customeremail;
 
 public Movie getMovie() {
 	return movie;
@@ -51,16 +52,24 @@ public float getTotalprice() {
 public void setTotalprice(float totalprice) {
 	this.totalprice = totalprice;
 }
-public Login getCustomer() {
-	return customer;
+public String getCustomeremail() {
+	return customeremail;
 }
-public void setCustomer(Login customer) {
-	this.customer = customer;
+public void setCustomeremail(String customeremail) {
+	this.customeremail = customeremail;
 }
 @Override
 public String toString() {
 	return "Booking [bid=" + bid + ", tickets=" + tickets + ", bookingdate=" + bookingdate + ", totalprice="
-			+ totalprice + ", movie=" + movie + ", customer=" + customer + "]";
+			+ totalprice + ", movie=" + movie + ", customeremail=" + customeremail + "]";
 }
+
+//public Login getCustomer() {
+//	return customer;
+//}
+//public void setCustomer(Login customer) {
+//	this.customer = customer;
+//}
+
 
 }
