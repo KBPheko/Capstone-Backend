@@ -24,20 +24,17 @@ public class MovieService {
 		return movieRepository.findAll();
 	}
 	
+	public List<Movie> findMovieByKeyword(String keyword){
+		if(keyword != null) {
+			return movieRepository.findMovieByKeyword(keyword);
+		}
+		return movieRepository.findAll();
+	}
+	
 	public Movie findMovie(int mid) {
 		Optional<Movie> results = movieRepository.findById(mid);
 	    Movie mvie = results.get();
 		return movieRepository.getById(mvie.getMid());
-		
-		
-//		Optional<Movie> results = movieRepository.findById(mid);
-//		if(results.isPresent()) {
-//			Movie mv = results.get();
-//			Movie nn = movieRepository.getById(mv.getMid());
-//			return nn;
-//		} else {
-//			return results;
-//		}
 		
 	}
 	

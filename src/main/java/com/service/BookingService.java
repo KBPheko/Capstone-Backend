@@ -30,6 +30,7 @@ public class BookingService {
 		return bookingRepository.findAll();
 	}
 	
+	//get booking by id
 	public Booking viewBooking(int bookingid) {
 		return bookingRepository.findById(bookingid).get();
 	}
@@ -38,13 +39,13 @@ public class BookingService {
 		
 		Movie mov = new Movie();
 		if(movieid!=null) {
-			mov = movieRepository.findById(movieid).get();
+			mov = movieRepository.findById(movieid).get(); //fetch the movie to book
 			
-			booking.setMovie(mov);
+			booking.setMovie(mov);  //then set it inside booking
 		}
 		bookingRepository.saveAndFlush(booking);
 		
-		return booking;
+		return booking; //contains movie id
 		
 	}
 	
@@ -52,6 +53,7 @@ public class BookingService {
 		bookingRepository.save(booking);
 		return "Movie booked successfully";
 	}
+	
 	
 	public String cancelBooking(int bid) {
 		Optional<Booking> result = bookingRepository.findById(bid);
@@ -94,5 +96,11 @@ public class BookingService {
 		booking.setTotalprice(amount);
 		bookingRepository.saveAndFlush(booking);
 		return amount;
+	}
+	
+	//get all bookings
+	public List<Booking> viewAllBookings(){
+		List<Booking> bkl = bookingRepository.findAll();
+		return bkl;
 	}
 }

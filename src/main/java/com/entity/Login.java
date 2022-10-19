@@ -3,6 +3,7 @@ package com.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Login {
@@ -14,6 +15,7 @@ private String lastname;
 private String dob;  //date of birth
 private String mobilenumber;
 private String role;
+
 public String getEmail() {
 	return email;
 }

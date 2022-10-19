@@ -46,8 +46,14 @@ public class MovieController {
 		return movieService.findMovie(mid);
 	}
 	
-	@DeleteMapping(value = "deleteMovie/{mid}")
-	public String deleteMovie(@PathVariable("mid") int mid) {
+	
+	@GetMapping(value = "filteredResults/{keyword}")
+	public List<Movie> getMovieByKeyword(@PathVariable("keyword") String keyword){
+		return movieService.findMovieByKeyword(keyword);
+	}
+	
+	@DeleteMapping(value = "deleteMovie/{id}")
+	public String deleteMovie(@PathVariable("id") int mid) {
 		return movieService.deleteMovieRecord(mid);
 	}
 }

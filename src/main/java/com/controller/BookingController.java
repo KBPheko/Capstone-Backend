@@ -1,10 +1,14 @@
 package com.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +26,11 @@ public class BookingController {
 	@Autowired
 	BookingService bookingService;
 	
-//	@PostMapping(value = "book", consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public String storeMovie(@RequestBody Booking bk) {
-//		return bookingService.addBooking(bk);
-//	}
 	
+	@GetMapping("allbookings")
+	public ResponseEntity<List<Booking>> viewAllBookings(){
+		return ResponseEntity.ok(bookingService.viewAllBookings());
+	}
 	
 	@PostMapping("bookmovie")
 	public ResponseEntity<Booking> addBooking(@RequestBody Booking b, @RequestParam Integer mid){
@@ -35,5 +39,28 @@ public class BookingController {
 		b = bookingService.addBooking(b, mid);
 		System.out.println("Booked movie successfully");
 		return new ResponseEntity<>(b, HttpStatus.CREATED);
+	}
+	
+	@GetMapping("/viewbooking/{bookingid}")
+	public ResponseEntity<Booking> viewBooking(@PathVariable int bookingid){
+		
+		ResponseEntity<Booking> res = null;
+		try {
+			Booking booking = bookingService.viewBooking(bookingid);
+			res= new ResponseEntity<>(booking, HttpStatus.OK);
+		} catch (Exception e) {
+			res= new ResponseEntity<>(HttpStatus.NOT_FOUND); 
+		}
+		return res;
+	}
+	
+//	@GetMapping("/search/{keyword}")
+//	public ResponseEntity<?> searchByKeyword(@PathVariable ){
+//		
+//	}
+//	
+	@GetMapping("/cost/{bookingid}")
+	public float totalCostPrice(@PathVariable int bookingid) {
+		return bookingService.calculateTotal(bookingid);
 	}
 }

@@ -13,10 +13,10 @@ public class Booking {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private int bid;   //booking ID
-private int tickets; 
-private String bookingdate;
+private int tickets;   //number of tickets bought
+private String bookingdate;  //when a customer would like to see the movie
 private float totalprice;
-@OneToOne(mappedBy = "booking")
+@OneToOne
 private Movie movie;
 @ManyToOne
 private Login customer;
